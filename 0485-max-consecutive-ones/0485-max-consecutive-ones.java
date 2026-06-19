@@ -10,14 +10,9 @@ class Solution {
                 }
             }
             else{
-                if(max_count>count){
-                    count=0;
+                count=0;
                 }
-                else{
-                    max_count=count;
-                    count=0;
-                }
-            }
+            
         }
         return max_count;
     }
