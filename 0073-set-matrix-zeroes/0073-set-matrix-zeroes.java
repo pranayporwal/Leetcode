@@ -1,37 +1,40 @@
 class Solution {
     public void setZeroes(int[][] matrix) {
-        int[] row = new int[matrix.length];
-        int[] col = new int[matrix[0].length];
-        for(int i =0;i<matrix.length;i++){
-            for(int j=0;j<matrix[0].length;j++){
-                if(matrix[i][j]==0){
-                    row[i]=1;
-                    col[j]=1;
+
+        int rows = matrix.length;
+        int cols = matrix[0].length;
+
+        int col0 = 1;
+
+        // Step 1: Mark rows and columns
+        for (int i = 0; i < rows; i++) {
+
+            if (matrix[i][0] == 0) {
+                col0 = 0;
+            }
+
+            for (int j = 1; j < cols; j++) {
+
+                if (matrix[i][j] == 0) {
+                    matrix[i][0] = 0;
+                    matrix[0][j] = 0;
                 }
             }
         }
-        for(int i =0;i<row.length;i++){
-            if(row[i] == 1){
-                markRows(matrix,i);
+
+        // Step 2: Fill matrix using markers
+        for (int i = rows - 1; i >= 0; i--) {
+
+            for (int j = cols - 1; j >= 1; j--) {
+
+                if (matrix[i][0] == 0 || matrix[0][j] == 0) {
+                    matrix[i][j] = 0;
+                }
+
             }
-        }
-        for(int i =0;i<col.length;i++){
-            if(col[i] == 1){
-                markCol(matrix,i);
-            }
-        }
-    }
-    public void markRows(int[][] matrix,int row){
-        for(int col=0;col<matrix[0].length;col++){
-            if(matrix[row][col] != 0){
-                matrix[row][col]=0;
-            }
-        }
-    }
-    public void markCol(int[][] matrix,int col){
-        for(int row=0;row<matrix.length;row++){
-            if(matrix[row][col] != 0){
-                matrix[row][col]=0;
+
+            if (col0 == 0) {
+                matrix[i][0] = 0;
             }
         }
     }
