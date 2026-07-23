@@ -4,9 +4,7 @@ class Solution {
         int col = matrix[0].length;
         for(int i =0;i<row;i++){
             for(int j =i+1;j<col;j++){
-                if(i<j){
                     swap(matrix,i,j);
-                }
             }
         }
         for(int i =0;i<row;i++){
@@ -27,8 +25,4 @@ class Solution {
             matrix[i][end--]=temp;
         }
     }
-        
-
-    
-
 }
