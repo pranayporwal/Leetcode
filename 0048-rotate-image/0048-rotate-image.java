@@ -3,7 +3,7 @@ class Solution {
         int row=matrix.length;
         int col = matrix[0].length;
         for(int i =0;i<row;i++){
-            for(int j =0;j<col;j++){
+            for(int j =i+1;j<col;j++){
                 if(i<j){
                     swap(matrix,i,j);
                 }
