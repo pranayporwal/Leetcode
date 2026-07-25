@@ -5,13 +5,12 @@ class Solution {
         char[] str = num.toCharArray();
         for (int i = n - 1; i >= 0; i--) {
             if (str[i] % 2 != 0) {
-                index = i;
-                break;
+                return num.substring(0,i+1);
             }
         }
-        if(index == -1){
+        
             return "";
-        }
-        return num.substring(0, index + 1);
+        
+        
     }
 }
