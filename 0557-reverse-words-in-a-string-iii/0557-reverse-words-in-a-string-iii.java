@@ -7,10 +7,8 @@ class Solution {
                 reverse(arr,left,i-1);
                 left = i+1;
             }
-            else if(i == arr.length-1){
-                reverse(arr,left,i);
-            }
         }
+        reverse(arr,left,arr.length-1);
         return new String(arr);
     }
     public void reverse(char[] arr,int left , int right){
