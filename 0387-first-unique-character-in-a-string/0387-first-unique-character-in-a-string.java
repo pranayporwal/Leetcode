@@ -1,5 +1,6 @@
 class Solution {
     public int firstUniqChar(String s) {
+        if(s.length()==0) return -1;
         int[] freq = new int[26];
         for(int i =0;i<s.length();i++){
             freq[s.charAt(i)-'a']++;
