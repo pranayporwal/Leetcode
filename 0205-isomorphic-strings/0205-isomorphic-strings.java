@@ -7,7 +7,7 @@ class Solution {
                 mpp.put(s.charAt(i),t.charAt(i));
                 mppt.put(t.charAt(i),s.charAt(i));
             }
-            else if(!mpp.containsKey(s.charAt(i)) && mpp.containsValue(t.charAt(i))){
+            else if(!mpp.containsKey(s.charAt(i)) && mppt.containsKey(t.charAt(i))){
                 return false;
             }
             else{
