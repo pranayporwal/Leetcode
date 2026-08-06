@@ -4,11 +4,10 @@ class Solution {
         int maxLen=0;
         int mistakes=0;
         for(int i =0;i<nums.length;i++){
-            if(nums[i]==1){
-                maxLen=Math.max(maxLen,i-left+1);
-            }
-            else{
+            if(nums[i]==0){
                 mistakes++;
+            }
+
                 while(mistakes>k){
                     if(nums[left] ==0){
                         mistakes--;
@@ -16,7 +15,7 @@ class Solution {
                     left++;
                 }
                 maxLen=Math.max(maxLen,i-left+1);
-            }
-        }return maxLen;
-    }
+            }return maxLen;
+        }
+    
 }
