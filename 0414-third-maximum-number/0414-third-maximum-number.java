@@ -5,9 +5,9 @@ class Solution {
         long max3 = Long.MIN_VALUE;
 
         for(int i =0;i<nums.length;i++){
-            if (nums[i] == max1 || nums[i] == max2 || nums[i] == max3) {
-                continue;
-            }
+            //if (nums[i] == max1 || nums[i] == max2 || nums[i] == max3) {
+             //   continue;
+            //}
             if(nums[i]>max1){
                 max3 = max2;
                 max2 = max1;
