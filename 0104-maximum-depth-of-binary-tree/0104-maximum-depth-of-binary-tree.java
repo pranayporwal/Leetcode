@@ -15,18 +15,7 @@
  */
 class Solution {
     public int maxDepth(TreeNode root) {
-        Queue <TreeNode> st = new ArrayDeque<>();
-        int depth =0;
-        if(root == null) return depth;
-        st.offer(root);
-        while(!st.isEmpty()){
-            depth++;
-            int levelsize=st.size();
-            for(int i =0;i<levelsize;i++){
-                TreeNode curr = st.poll();
-                if(curr.left != null) st.offer(curr.left);
-                if(curr.right != null) st.offer(curr.right);
-            }
-        }return depth;
+        if(root == null) return 0;
+        return 1 + Math.max(maxDepth(root.left),maxDepth(root.right));
     }
 }
