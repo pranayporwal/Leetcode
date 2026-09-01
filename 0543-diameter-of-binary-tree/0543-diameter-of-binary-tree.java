@@ -22,8 +22,8 @@ class Solution {
     }
     public int depth(TreeNode root){
         if(root==null) return 0;
-        int left =(root.left == null)? 0:depth(root.left);
-        int right =(root.right == null)? 0:depth(root.right);
+        int left =depth(root.left);
+        int right =depth(root.right);
         diameter = Math.max(diameter,left+right);
         return 1+ Math.max(left,right);
     }
