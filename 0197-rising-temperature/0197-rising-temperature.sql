@@ -1,13 +1,16 @@
 -- Write your PostgreSQL query statement below
-SELECT id
-FROM (
-    SELECT id , temperature,recordDate, LAG(temperature) OVER(
-        ORDER BY recordDate
-    ) AS prev,
+WITH detailWeather AS(
+    SELECT id , recordDate ,temperature, 
     LAG(recordDate) OVER (
         ORDER BY recordDate
-    ) as prev_date
+    ) AS prev_date,
+    LAG(temperature) OVER (
+        ORDER BY recordDate
+    ) AS prev_temp
     FROM Weather
-) x
-WHERE temperature > prev 
-AND recordDate = prev_date + INTERVAL '1 day';
+)
+
+SELECT id
+FROM detailWeather
+WHERE prev_date + INTERVAL'1 day' = recordDate
+AND temperature > prev_temp;
