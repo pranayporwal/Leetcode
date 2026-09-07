@@ -1,12 +1,14 @@
 -- Write your PostgreSQL query statement below
-SELECT Department , Employee , salary
-FROM(
-    SELECT d.name as Department , e.name AS Employee , e.salary , DENSE_RANK() OVER (
-        PARTITION BY e.departmentId
-        ORDER BY salary DESC
-    ) AS r
-    FROM Employee e 
+WITH topSalary AS(
+    SELECT d.name AS Department , e.name as  Employee , e.salary as Salary, DENSE_RANK() OVER(
+        PARTITION BY e.departmentId 
+        ORDER BY e.salary DESC
+    ) AS salary_rank
+    FROM Employee e
     LEFT JOIN Department d
     ON e.departmentId = d.id
-) 
-WHERE r <=3;
+)
+
+SELECT Department , Employee , Salary
+FROM topSalary
+WHERE salary_rank <= 3;
